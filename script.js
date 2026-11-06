@@ -8,7 +8,7 @@
 
   const MESSAGE = `Para Pao:
 
-Hay formas de dedicar canciones, para mí esta es una especial para alguien mucho más, podré no igualar las intensidades, pero quería tomar parte de la delantera, usé esta fecha para no olvidar, y menos como aquel petricor con el que me pusiste a prueba jaja
+Hay formas de dedicar canciones, para mí esta es una especial, tanto como tú. Podré no igualar las intensidades, pero quería tomar parte de la delantera, usé esta fecha para no olvidar, y menos como aquel petricor con el que me pusiste a prueba jaja
 
 Esta canción es para ti. Se llama "Me gusta", y sí: me gustas tú, tu mirada, tu forma de pensar y tu manera de querer.`;
   const SIGNATURE = 'Con todo mi cariño, Diego 💜';
@@ -76,13 +76,31 @@ Esta canción es para ti. Se llama "Me gusta", y sí: me gustas tú, tu mirada, 
     'Mmm, esa no es... piensa en nuestro primer beso 💜',
     'Casi... no se me olvida ese día. Intenta de nuevo 🌺',
     'Pista: fue en octubre ✨',
-    'Pista: fue en 2026. Escríbelo como día/mes/año, por ejemplo 11/10/2026 😉'
+    'Pista: fue en 2026 😉'
   ];
+
+  // Campo con máscara: solo números, se agregan las "/" solas (DD/MM/AAAA)
+  input.addEventListener('input', () => {
+    const digits = input.value.replace(/\D/g, '').slice(0, 8);
+    let day = digits.slice(0, 2), month = digits.slice(2, 4);
+    const year = digits.slice(4, 8);
+    if (day.length === 2 && +day > 31) day = '31';
+    if (day.length === 2 && +day < 1) day = '01';
+    if (month.length === 2 && +month > 12) month = '12';
+    if (month.length === 2 && +month < 1) month = '01';
+    // la "/" aparece al escribir el siguiente dígito, así borrar con la tecla atrás no se traba
+    const formatted = [day, month, year].filter((p) => p.length).join('/');
+    if (input.value !== formatted) input.value = formatted;
+  });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const value = input.value.trim();
     if (!value) return;
+    if (value.replace(/\D/g, '').length < 8) {
+      gateMsg.textContent = 'Escribe la fecha completa: día, mes y año (DD/MM/AAAA) 💜';
+      return;
+    }
     if (isCorrect(value)) return unlock();
     gateMsg.textContent = HINTS[Math.min(attempts, HINTS.length - 1)];
     attempts++;

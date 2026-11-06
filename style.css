@@ -106,7 +106,9 @@ h1 { font-weight: 600; font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; t
 #gate-form button:hover { transform: translateY(-2px); }
 #gate-form button:active { transform: scale(.97); }
 
-.gate-msg { min-height: 52px; margin-top: 16px; max-width: 420px; font-size: 16px; line-height: 1.45; color: #ffd6ec; }
+.format-hint { margin-top: 10px; font-size: 14px; color: rgba(234,217,255,.7); letter-spacing: .3px; }
+#code { letter-spacing: 2px; }
+.gate-msg { min-height: 52px; margin-top: 8px; max-width: 420px; font-size: 16px; line-height: 1.45; color: #ffd6ec; }
 .shake { animation: shake .45s; }
 @keyframes shake { 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }
 

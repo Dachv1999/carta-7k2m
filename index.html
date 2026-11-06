@@ -21,9 +21,10 @@
     <h1>Hay algo para ti <span aria-hidden="true">💜</span></h1>
     <p class="riddle">Para abrirlo, responde:<br><strong>¿Cuándo fue nuestro primer beso?</strong></p>
     <form id="gate-form" autocomplete="off" novalidate>
-      <input id="code" type="text" inputmode="numeric" placeholder="DD / MM / AAAA" aria-label="Fecha del primer beso" maxlength="24">
+      <input id="code" type="text" inputmode="numeric" pattern="[0-9/]*" placeholder="DD/MM/AAAA" aria-label="Fecha del primer beso, día mes y año" maxlength="10" autocomplete="off">
       <button type="submit">Abrir 🌺</button>
     </form>
+    <p class="format-hint">Solo números · ejemplo: 05/03/2025</p>
     <p id="gate-msg" class="gate-msg" role="status" aria-live="polite"></p>
   </main>
 
