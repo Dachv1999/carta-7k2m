@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a1250">
+  <title>Para Pao 💜</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stars" aria-hidden="true"></div>
+  <div id="hearts" aria-hidden="true"></div>
+
+  <!-- Vista 1: clave -->
+  <main id="gate" class="view active">
+    <img class="stitch stitch-gate" src="assets/stitch.png" alt="" aria-hidden="true">
+
+    <h1>Hay algo para ti <span aria-hidden="true">💜</span></h1>
+    <p class="riddle">Para abrirlo, responde:<br><strong>¿Cuándo fue nuestro primer beso?</strong></p>
+    <form id="gate-form" autocomplete="off" novalidate>
+      <input id="code" type="text" inputmode="numeric" placeholder="DD / MM / AAAA" aria-label="Fecha del primer beso" maxlength="24">
+      <button type="submit">Abrir 🌺</button>
+    </form>
+    <p id="gate-msg" class="gate-msg" role="status" aria-live="polite"></p>
+  </main>
+
+  <!-- Vista 2: carta -->
+  <section id="letter" class="view">
+    <p class="tap-hint" id="tap-hint">Toca la carta ✨</p>
+    <div class="card-wrap">
+      <div class="card" id="card" tabindex="0" role="button" aria-label="Abrir la carta">
+        <div class="face front">
+          <div class="front-flowers" aria-hidden="true">🌺 🌸 🌺</div>
+          <img class="stitch stitch-card" src="assets/stitch.png" alt="" aria-hidden="true">
+          <p class="front-to">Para Pao</p>
+          <p class="front-sub">Ohana · con cariño</p>
+        </div>
+        <div class="face back">
+          <div class="msg" id="msg" aria-live="polite"></div>
+          <button id="ember" class="ember" type="button" aria-label="Una sorpresa escondida" hidden>🔥</button>
+        </div>
+      </div>
+    </div>
+    <button id="music-btn" class="music-btn" type="button" aria-label="Pausar música" hidden>⏸</button>
+  </section>
+
+    <audio id="song" src="assets/cancion.mp3" preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
